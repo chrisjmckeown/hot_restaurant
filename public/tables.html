@@ -53,11 +53,74 @@
         <footer class="footer mt-4">
             <div class="container">
                 <p>Control Panel</p>
-                <p><a href="#" id="clear">Clear Table</a> | <a href="/api/tables">API Table Link</a> | <a
-                        href="/api/waitlist">API
+                <p><a href="#" id="clear">Clear Table</a> | <a href="/api/reseve">API Table Link</a> | <a
+                        href="/api/waiting">API
                         Wait List</a>
             </div>
         </footer>
+
+
+
+        <script type="text/javascript">
+            function tableQuery() {
+
+                $.ajax({ url: "/api/reserve", method: "GET" })
+                    .then(function (reserveTable) {
+                        console.log(reserveTable)
+
+                        for (var i = 0; i < reserveTable.length; i++) {
+                            console.log(reserveTable)
+                            console.log(reserveTable[i])
+                            var tableCurrent = $("#tableList")
+
+                            var listItem = $("<li class ='list-group-item mt-6'>")
+
+                            listItem.append(
+                                $("<h2>").text("Table Number: " + (i + 1)),
+                                $("<h2>").text("Name: " + reserveTable[i].custName),
+                                $("<h2>").text("ID: " + reserveTable[i].custID),
+                                $("<h2>").text("Phone: " + reserveTable[i].custPhone),
+                                $("<h2>").text("Email: " + reserveTable[i].custEmail),
+
+                            )
+
+                            tableCurrent.append(listItem)
+                        }
+                    })
+
+            }
+
+
+
+            function waitQuery() {
+                $.ajax({ url: "/api/waiting", method: "GET" })
+                    .then(function (waitingOnTable) {
+
+                        for (var i = 0; i < waitingOnTable.length; i++) {
+                            console.log(waitingOnTable)
+                            console.log(waitingOnTable[i])
+                            var waitCurrent = $("#waitList")
+
+                            var listItem = $("<li class ='list-group-item mt-6'>")
+
+                            listItem.append(
+                                $("<h2>").text("Name: " + waitingOnTable[i].custName),
+                                $("<h2>").text("ID: " + waitingOnTable[i].custID),
+                                $("<h2>").text("Phone: " + waitingOnTable[i].custPhone),
+                                $("<h2>").text("Email: " + waitingOnTable[i].custEmail),
+
+                            )
+
+                            waitCurrent.append(listItem)
+                        }
+                    })
+
+            }
+
+            tableQuery();
+            waitQuery();
+        </script>
+
 
 </body>
 
