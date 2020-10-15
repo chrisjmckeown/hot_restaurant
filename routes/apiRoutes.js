@@ -14,7 +14,7 @@ module.exports = function (app) {
 
     // add route
     app.post("/api/reserve", (req, res) => {
-        if (reserveTable.length < 10) {
+        if (reserveTable.length < 5) {
             reserveTable.push(req.body);
         }
         else{

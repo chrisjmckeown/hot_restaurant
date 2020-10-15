@@ -65,3 +65,29 @@
 </body>
 
 </html>
+
+<script type="text/javascript">
+    $(".submit").on("click", (event) => {
+        event.preventDefault();
+        var reservation =
+        {
+            custName: $("#reserve-name").val().trim(),
+            custEmail: $("#email-name").val().trim(),
+            custPhone: $("#phone-name").val().trim(),
+            custID: $("#unique-name").val().trim()
+        }
+        console.log(reservation);
+
+        $.post("/api/reserve", reservation)
+            .then(function (data) {
+                console.log("add.html", data);
+                alert("Adding character...");
+            });
+
+        $("#reserve-name").val("");
+        $("#email-name").val("");
+        $("#phone-name").val("");
+        $("#unique-name").val("");
+    });
+
+</script>
