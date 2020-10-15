@@ -13,14 +13,12 @@ module.exports = function (app) {
     });
 
     // add route
-    app.post("/api/reserve", () => {
-        var newReservation = req.body;
-        console.log(newReservation);
+    app.post("/api/reserve", (req, res) => {
         if (reserveTable.length < 10) {
-            reserveTable.push(newCharacter);
+            reserveTable.push(req.body);
         }
         else{
-            waitingOnTable.push(newCharacter);
+            waitingOnTable.push(req.body);
         }
 
         res.json({ success: true });
@@ -28,7 +26,7 @@ module.exports = function (app) {
     
     // delete route
 
-    app.post("/api/clear", function(req, res) {
+    app.post("/api/clear", (req, res) =>{
         // Empty out the arrays of data
         reserveTable.length = 0;
         waitingOnTable.length = 0;
