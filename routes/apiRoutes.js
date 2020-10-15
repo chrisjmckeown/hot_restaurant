@@ -1,7 +1,7 @@
-var reserveTable = require('./data/reserveArray');
-var waitingOnTable = require('./data/waitArray');
+var reserveTable = require('../data/reserveData');
+var waitingOnTable = require('../data/waitData');
 
-function apiRoutes(app) {
+module.exports = function (app) {
     // Displays all reserve data
     app.get("/api/reserve", (req, res) => {
         res.json(reserveTable);
@@ -30,4 +30,3 @@ function apiRoutes(app) {
 
 
 }
-module.exports = apiRoutes;
