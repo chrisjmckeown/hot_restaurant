@@ -1,7 +1,7 @@
 var reserveTable = require('../data/reserveData');
 var waitingOnTable = require('../data/waitData');
 
-module.exports = function (app) {
+function apiRoutes(app) {
     // Displays all reserve data
     app.get("/api/reserve", (req, res) => {
         res.json(reserveTable);
@@ -17,21 +17,20 @@ module.exports = function (app) {
         if (reserveTable.length < 5) {
             reserveTable.push(req.body);
         }
-        else{
+        else {
             waitingOnTable.push(req.body);
         }
 
         res.json({ success: true });
     })
-    
-    // delete route
 
-    app.post("/api/clear", (req, res) =>{
+    // delete route
+    app.post("/api/clear", (req, res) => {
         // Empty out the arrays of data
         reserveTable.length = 0;
         waitingOnTable.length = 0;
-    
-        res.json({ success: true });
-      });
 
+        res.json({ success: true });
+    });
 }
+module.exports = apiRoutes;
