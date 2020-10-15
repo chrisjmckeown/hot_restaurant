@@ -117,6 +117,18 @@
 
             }
 
+            function clearTable() {
+                alert("Clearing...");
+
+                // Clear the tables on the server and then empty the elements on the client
+                $.ajax({ url: "/api/clear", method: "POST" }).then(function () {
+                    $("#waitList").empty();
+                    $("#tableList").empty();
+                });
+            }
+
+            $("#clear").on("click", clearTable);
+
             tableQuery();
             waitQuery();
         </script>
