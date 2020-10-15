@@ -15,12 +15,12 @@ function apiRoutes(app) {
     // add route
     app.post("/api/reserve", () => {
         var newReservation = req.body;
-        
+
 
         console.log(newReservation);
-      
+
         reserveTable.push(newCharacter);
-      
+
         res.json(newReservation);
     })
 
@@ -30,4 +30,4 @@ function apiRoutes(app) {
 
 
 }
-module.exports = apiRoutes(app);
+module.exports = apiRoutes;
