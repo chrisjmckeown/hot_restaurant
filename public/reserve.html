@@ -80,8 +80,12 @@
 
         $.post("/api/reserve", reservation)
             .then(function (data) {
-                console.log("add.html", data);
-                alert("Adding character...");
+                if(data.booked){
+                alert("Table booked!");
+                }
+                else{
+                alert("Sorry all tables are booked, you are on a waiting list!");
+                }
             });
 
         $("#reserve-name").val("");

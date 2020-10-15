@@ -1,6 +1,7 @@
 var reserveTable = require('../data/reserveData');
 var waitingOnTable = require('../data/waitData');
 
+// module.exports = function (app) {
 function apiRoutes(app) {
     // Displays all reserve data
     app.get("/api/reserve", (req, res) => {
@@ -16,12 +17,14 @@ function apiRoutes(app) {
     app.post("/api/reserve", (req, res) => {
         if (reserveTable.length < 5) {
             reserveTable.push(req.body);
+
+            res.json({ success: true, booked: true });
         }
         else {
             waitingOnTable.push(req.body);
-        }
 
-        res.json({ success: true });
+            res.json({ success: true, booked: false });
+        }
     })
 
     // delete route
