@@ -1,5 +1,3 @@
-
-
 var waitArray = [
     {
         custName: "Jake Doe",

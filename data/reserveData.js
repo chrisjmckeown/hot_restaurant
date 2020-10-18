@@ -1,6 +1,3 @@
-
-
-
 var reserveArray = [
     {
         custName: "John Smith",
@@ -9,6 +6,5 @@ var reserveArray = [
         custID: "hasdhfa78"
     }
 ]
-
 
 module.exports = reserveArray;
