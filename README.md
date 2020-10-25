@@ -37,6 +37,9 @@ Simple app to book tables.
 Once installed:
 * Create a new booking and see if you get put a reservation or put on a waiting list.
 
+
+<img src="./Images/Hot_Restaurant.png" alt="Hot Restaurant"> 
+
 ### Heroku Deployment
 
 View the deployed app here: https://floating-shelf-09890.herokuapp.com/
